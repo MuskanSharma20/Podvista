@@ -7,6 +7,11 @@ const nextConfig = {
                 hostname:'lovely-flamingo-139.convex.cloud'
             },
 
+            {
+                protocol:'https',
+                hostname:'resilient-hyena-104.convex.cloud'
+            }
+
         ],
         domains: ["encrypted-tbn0.gstatic.com"],
     }
