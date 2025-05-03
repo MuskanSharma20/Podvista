@@ -10,7 +10,12 @@ const nextConfig = {
             {
                 protocol:'https',
                 hostname:'resilient-hyena-104.convex.cloud'
+            },
+            {
+                protocol:'https',
+                hostname:'img.clerk.com'
             }
+
 
         ],
         domains: ["encrypted-tbn0.gstatic.com"],
