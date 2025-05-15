@@ -55,14 +55,14 @@ const CreatePodcast = () => {
   const [imagePrompt, setImagePrompt] = useState('');
   const [imageStorageId, setImageStorageId] = useState<Id<"_storage"> | null>(null)
   const [imageUrl, setImageUrl] = useState('');
-  
+
   const [audioUrl, setAudioUrl] = useState('');
   const [audioStorageId, setAudioStorageId] = useState<Id<"_storage"> | null>(null)
   const [audioDuration, setAudioDuration] = useState(0);
-  
+
   const [voiceType, setVoiceType] = useState<string | null>(null);
   const [voicePrompt, setVoicePrompt] = useState('');
-  
+
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const createPodcast = useMutation(api.podcasts.createPodcast)
@@ -77,11 +77,11 @@ const CreatePodcast = () => {
       podcastDescription: "",
     },
   })
- 
+
   async function onSubmit(data: z.infer<typeof formSchema>) {
     try {
       setIsSubmitting(true);
-      if(!audioUrl || !imageUrl || !voiceType) {
+      if (!audioUrl || !imageUrl || !voiceType) {
         toast({
           title: 'Please generate audio and image',
         })
@@ -140,18 +140,18 @@ const CreatePodcast = () => {
                 Select AI Voice
               </Label>
 
-<Select onValueChange={(value) => setVoiceType(value)}>
-  <SelectTrigger className="text-16 w-full border-none bg-black-1 text-gray-1 focus-visible:ring-offset-orange-1">
-    <SelectValue placeholder="Select AI Voice" />
-  </SelectTrigger>
-  <SelectContent className="text-16 border-none bg-black-1 font-bold text-white-1">
-    {voiceOptions.map((voice) => (
-      <SelectItem key={voice.id} value={voice.id} className="capitalize focus:bg-orange-1">
-        {voice.name}
-      </SelectItem>
-    ))}
-  </SelectContent>
-</Select>
+              <Select onValueChange={(value) => setVoiceType(value)}>
+                <SelectTrigger className="text-16 w-full border-none bg-black-1 text-gray-1 focus-visible:ring-offset-orange-1">
+                  <SelectValue placeholder="Select AI Voice" />
+                </SelectTrigger>
+                <SelectContent className="text-16 border-none bg-black-1 font-bold text-white-1">
+                  {voiceOptions.map((voice) => (
+                    <SelectItem key={voice.id} value={voice.id} className="capitalize focus:bg-orange-1">
+                      {voice.name}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
 
             </div>
 
@@ -168,38 +168,38 @@ const CreatePodcast = () => {
                 </FormItem>
               )}
             />
- <GeneratePodcast 
-                setAudioStorageId={setAudioStorageId}
-                setAudio={setAudioUrl}
-                voiceType={voiceType!}
-                audio={audioUrl}
-                voicePrompt={voicePrompt}
-                setVoicePrompt={setVoicePrompt}
-                setAudioDuration={setAudioDuration}
-              />
-<GenerateThumbnail
-setImage={setImageUrl}
-setImageStorageId={setImageStorageId}
-image={imageUrl}
-imagePrompt={imagePrompt}
-setImagePrompt={setImagePrompt}
-/>
+            <GeneratePodcast
+              setAudioStorageId={setAudioStorageId}
+              setAudio={setAudioUrl}
+              voiceType={voiceType!}
+              audio={audioUrl}
+              voicePrompt={voicePrompt}
+              setVoicePrompt={setVoicePrompt}
+              setAudioDuration={setAudioDuration}
+            />
+            <GenerateThumbnail
+              setImage={setImageUrl}
+              setImageStorageId={setImageStorageId}
+              image={imageUrl}
+              imagePrompt={imagePrompt}
+              setImagePrompt={setImagePrompt}
+            />
 
-<div className="mt-10 w-full">
-                <Button type="submit" className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1">
-                  {isSubmitting ? (
-                    <>
-                      Submitting
-                      <Loader size={20} className="animate-spin ml-2" />
-                    </>
-                  ) : (
-                    'Submit & Publish Podcast'
-                  )}
-                </Button>
-              </div>
+            <div className="mt-10 w-full">
+              <Button type="submit" className="text-16 w-full bg-orange-1 py-4 font-extrabold text-white-1 transition-all duration-500 hover:bg-black-1">
+                {isSubmitting ? (
+                  <>
+                    Submitting
+                    <Loader size={20} className="animate-spin ml-2" />
+                  </>
+                ) : (
+                  'Submit & Publish Podcast'
+                )}
+              </Button>
+            </div>
 
           </div>
-       
+
         </form>
       </Form>
     </section>

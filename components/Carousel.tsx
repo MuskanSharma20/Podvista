@@ -33,7 +33,7 @@ const EmblaCarousel = ({ fansLikeDetail }: CarouselProps) => {
 
   const slides = fansLikeDetail && fansLikeDetail?.filter((item: any) => item.totalPodcasts > 0)
 
-  if(!slides) return <LoaderSpinner />
+  if(!slides) return <LoaderSpinner /> 
 
   return (
     <section className="flex w-full flex-col gap-4 overflow-hidden" ref={emblaRef}>
@@ -42,7 +42,7 @@ const EmblaCarousel = ({ fansLikeDetail }: CarouselProps) => {
           <figure
             key={item._id}
             className="carousel_box"
-            onClick={() => router.push(`/podcasts/${item.podcast[0]?.podcastId}`)}
+            onClick={() => router.push(`/podcast/${item.podcast[0]?.podcastId}`)}
           >
             <Image 
             src={item.imageUrl}
